@@ -1,7 +1,8 @@
 package elisadaria.UN5W2d3praticaS2L3.services;
 
-import epicode.u5d7hw.entities.Blogpost;
-import epicode.u5d7hw.exceptions.NotFoundException;
+
+import elisadaria.UN5W2d3praticaS2L3.entities.Blogpost;
+import elisadaria.UN5W2d3praticaS2L3.exceptions.NotFoundException;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;

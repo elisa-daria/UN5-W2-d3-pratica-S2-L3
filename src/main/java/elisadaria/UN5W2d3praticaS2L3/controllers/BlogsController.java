@@ -1,7 +1,8 @@
 package elisadaria.UN5W2d3praticaS2L3.controllers;
 
-import epicode.u5d7hw.entities.Blogpost;
-import epicode.u5d7hw.services.BlogsService;
+
+import elisadaria.UN5W2d3praticaS2L3.entities.Blogpost;
+import elisadaria.UN5W2d3praticaS2L3.services.BlogsService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
