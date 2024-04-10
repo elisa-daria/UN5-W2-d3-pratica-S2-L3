@@ -16,8 +16,6 @@ public class BlogsService {
     private final List<Blogpost> blogs = new ArrayList<>();
 
     public Blogpost save(Blogpost blogpost) {
-        Random rndm = new Random();
-        blogpost.setId(rndm.nextInt());
         blogpost.setCover("https://picsum.photos/200/300");
         this.blogs.add(blogpost);
         return blogpost;
@@ -60,7 +58,7 @@ public class BlogsService {
                 found.setCategory(body.getCategory());
                 found.setContent(body.getCover());
                 found.setReadingTime(body.getReadingTime());
-                found.setId(id);
+
             }
         }
         if (found == null)
