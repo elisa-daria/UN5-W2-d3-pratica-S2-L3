@@ -30,11 +30,11 @@ public class AuthorsController {
         return authorsService.getAuthors(page,size,sortBy);
     }
 
-//    // 3. - GET http://localhost:3001/authors/{id}
-//    @GetMapping("/{authorId}")
-//    public Author findById(@PathVariable int authorId) throws Exception {
-//        return authorsService.findById(authorId);
-//    }
+
+    @GetMapping("/{authorId}")
+    public Author findById(@PathVariable int authorId) throws Exception {
+        return authorsService.findById(authorId);
+    }
 //
 //    // 4. - PUT http://localhost:3001/authors/{id} (+ req.body)
 //    @PutMapping("/{authorId}")

@@ -5,17 +5,13 @@ import elisadaria.UN5W2d3praticaS2L3.entities.Author;
 import elisadaria.UN5W2d3praticaS2L3.exceptions.NotFoundException;
 import elisadaria.UN5W2d3praticaS2L3.repositories.AuthorDAO;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.autoconfigure.data.web.SpringDataWebProperties;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.ListIterator;
-import java.util.Random;
+import java.util.*;
 
 @Service
 public class AuthorsService {
@@ -35,17 +31,9 @@ public class AuthorsService {
         return this.authorDAO.findAll(pageable);
     }
 
-//    public Author findById(int id) {
-//        Author found = null;
-//
-//        for (Author author : authors) {
-//            if (author.getId() == id)
-//                found = author;
-//        }
-//        if (found == null)
-//            throw new NotFoundException(id);
-//        return found;
-//    }
+    public Author findById(int id) {
+        return this.authorDAO.findById(id).orElseThrow(() -> new NotFoundException(id));
+    }
 //
 //    public void findByIdAndDelete(int id) {
 //        ListIterator<Author> iterator = this.authors.listIterator();
