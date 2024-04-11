@@ -1,13 +1,21 @@
 package elisadaria.UN5W2d3praticaS2L3.controllers;
 
 
+import com.cloudinary.utils.ObjectUtils;
 import elisadaria.UN5W2d3praticaS2L3.entities.Author;
+import elisadaria.UN5W2d3praticaS2L3.exceptions.BadRequestEx;
+import elisadaria.UN5W2d3praticaS2L3.payloads.AuthorPayload;
+import elisadaria.UN5W2d3praticaS2L3.payloads.NewAutRESP;
 import elisadaria.UN5W2d3praticaS2L3.services.AuthorsService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.http.HttpStatus;
+import org.springframework.validation.BindingResult;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 
+import java.io.IOException;
 import java.util.List;
 
 @RestController
@@ -19,9 +27,11 @@ public class AuthorsController {
 
     @PostMapping("")
     @ResponseStatus(HttpStatus.CREATED) // <-- 201
-    public Author saveAuthor(@RequestBody Author body) throws Exception {
-        System.out.println(body);
-        return authorsService.save(body);
+    public NewAutRESP saveAuthor(@RequestBody @Validated AuthorPayload body, BindingResult validation) {
+        if(validation.hasErrors()){
+            throw new BadRequestEx(validation.getAllErrors());
+        }
+        return new NewAutRESP(this.authorsService.save(body).getId());
     }
 
 
@@ -48,4 +58,11 @@ public class AuthorsController {
 //    public void findAndDelete(@PathVariable int authorId) {
 //        authorsService.findByIdAndDelete(authorId);
 //    }
+
+    @PostMapping("/upload")
+    public String uploadAvatar(@RequestParam("avatar") MultipartFile image) throws IOException {
+        return this.authorsService.uploadImage(image);
+
+    }
+
 }

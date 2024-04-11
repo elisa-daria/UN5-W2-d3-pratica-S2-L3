@@ -1,4 +1,4 @@
-package elisadaria.UN5W2d3praticaS2L3.payload;
+package elisadaria.UN5W2d3praticaS2L3.payloads;
 
 import java.time.LocalDateTime;
 
