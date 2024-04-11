@@ -1,5 +1,6 @@
 package elisadaria.UN5W2d3praticaS2L3.entities;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.*;
 
@@ -21,6 +22,7 @@ public class Author {
     private String email;
     private String dateOfBirth;
     private String avatar;
+    @JsonIgnore
     @OneToMany(mappedBy = "author")
     private List<Blogpost>blogposts;
 }
